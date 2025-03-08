@@ -5,38 +5,250 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cài đặt Locket Gold</title>
     <style>
+        /* Toàn bộ trang */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f7c77d, #f6e3b4); /* Gradient vàng nhạt */
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f4;
+            overflow: hidden;
+            transition: background 0.3s ease-in-out;
         }
+
+        /* Hiệu ứng nền chuyển động */
+        @keyframes backgroundEffect {
+            0% {
+                background: linear-gradient(135deg, #f7c77d, #f6e3b4);
+            }
+            50% {
+                background: linear-gradient(135deg, #ffdb58, #ffd700);
+            }
+            100% {
+                background: linear-gradient(135deg, #f7c77d, #f6e3b4);
+            }
+        }
+
+        body {
+            animation: backgroundEffect 5s ease-in-out infinite;
+        }
+
+        /* Cấu trúc container */
         .container {
             text-align: center;
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 60px 50px;
+            max-width: 650px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 10px 25px rgba(0, 0, 0, 0.05);
+            transform: scale(1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
+
+        .container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.15), 0 12px 30px rgba(0, 0, 0, 0.07);
+        }
+
+        /* Tiêu đề */
+        h1 {
+            font-size: 48px;
+            color: #f9a800; /* Vàng sáng */
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            transform: scale(1);
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Đoạn văn */
+        p {
+            font-size: 20px;
+            color: #777;
+            line-height: 1.8;
+            margin-bottom: 35px;
+            font-weight: 300;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* Nút cài đặt */
         .btn {
             display: inline-block;
-            background-color: #4CAF50;
+            background: linear-gradient(145deg, #ffcc00, #ffb300); /* Vàng */
             color: white;
-            padding: 15px 30px;
+            font-size: 22px;
+            font-weight: 600;
+            padding: 18px 55px;
             text-align: center;
             text-decoration: none;
-            border-radius: 5px;
-            font-size: 18px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s;
+            border-radius: 50px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: none;
+            transform: scale(1);
+            transition: all 0.3s ease-in-out;
         }
+
         .btn:hover {
-            background-color: #45a049;
+            background: linear-gradient(145deg, #ffb300, #ffcc00);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: ripple 0.6s linear;
+        }
+
+        @keyframes ripple {
+            to {
+                width: 0;
+                height: 0;
+            }
+        }
+
+        /* Hiệu ứng chuyển động cho trang */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1, p {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        /* Hiệu ứng container */
+        @keyframes containerEffect {
+            0% {
+                transform: rotateY(10deg);
+            }
+            100% {
+                transform: rotateY(0deg);
+            }
+        }
+
+        .container {
+            animation: containerEffect 1s ease-out;
+        }
+
+        /* Thiết kế cho màn hình nhỏ */
+        @media (max-width: 768px) {
+            body {
+                background: linear-gradient(135deg, #f6e3b4, #f7c77d);
+            }
+
+            .container {
+                padding: 40px 30px;
+                width: 90%;
+                max-width: 550px;
+            }
+
+            h1 {
+                font-size: 38px;
+            }
+
+            .btn {
+                font-size: 20px;
+                padding: 15px 40px;
+            }
+
+            p {
+                font-size: 18px;
+            }
+        }
+
+        /* Thiết kế cho màn hình rất nhỏ */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 30px;
+                margin-bottom: 15px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            .btn {
+                font-size: 18px;
+                padding: 12px 30px;
+            }
+        }
+
+        /* Các hiệu ứng chuyển động khác */
+        @keyframes shadowGlow {
+            0% {
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+            50% {
+                box-shadow: 0 15px 50px rgba(255, 223, 0, 0.6);
+            }
+            100% {
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+        }
+
+        .container:hover {
+            animation: shadowGlow 2s infinite;
+        }
+
+        /* Hiệu ứng ảnh nền */
+        .backgroundImage {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.example.com/path/to/your-gold-texture.jpg');
+            background-position: center;
+            background-size: cover;
+            opacity: 0.2;
+            filter: blur(8px);
+            z-index: -1;
+        }
+
+        /* Thêm các gradient cho phần nội dung */
+        .gradientText {
+            background: linear-gradient(135deg, #f9e600, #ffcd00);
+            -webkit-background-clip: text;
+            color: transparent;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
+    <div class="backgroundImage"></div>
     <div class="container">
-        <h1>Cài đặt Locket Gold</h1>
+        <h1 class="gradientText">Cài đặt Locket Gold</h1>
         <p>Nhấp vào nút dưới đây để cài đặt module Locket Gold trên Shadowrocket:</p>
         <a href="shadowrocket://install?module=https://raw.githubusercontent.com/kien234/locket/refs/heads/main/vnkien26.sgmodule" class="btn">
             Cài đặt Locket Gold
